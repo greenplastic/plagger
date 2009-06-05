@@ -42,7 +42,7 @@ sub publish_entry {
     my $bitly_api_key  = $self->conf->{bitly_api_key};
 
     my @shorteners = (
-      WWW::Shorten::Simple->new('RevCanonical'), # Try this first
+      WWW::Shorten::Simple->new('RevCanonical'), # Try RevCanonical first
       WWW::Shorten::Simple->new('Bitly', $bitly_username, $bitly_api_key), # Then fallback to Bitly
     );
 
