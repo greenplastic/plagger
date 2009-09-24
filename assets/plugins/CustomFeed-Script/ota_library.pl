@@ -26,25 +26,25 @@ $mech->submit_form(
   }
 );
 
-$mech->get('https://www.lib.city.ota.tokyo.jp/clis/logrent?AUT=Cavde3Vuxs3dqe3&MAXVIEW=20&RTNPAGE=/idcheck.html');
+$mech->follow_link(text => "貸出照会へ");
 
 my $s = scraper {
   process "table.FULL tbody tr",
     "list[]" => scraper {
       process "//td[2]", "title" => "TEXT";
       process "//td[5]", "date" => "TEXT";
-      result 'title','date';
+#      result 'title','date';
     };
-  result 'list';
+#  result 'list';
 };
 
 my $res = $s->scrape($mech->content, $mech->uri);
 
 my $feed = {
-  title => "ota library"
+  title => "大田区図書館返却期限"
 };
 
-for my $menu (@{$res}) {
+for my $menu (@{$res->{list}}) {
   if ($menu->{title} and $menu->{date}){
     push @{$feed->{entries}}, {
       title => $menu->{title},
@@ -53,11 +53,9 @@ for my $menu (@{$res}) {
   }
 }
 
-
 use YAML;
 binmode STDOUT, ":utf8";
 print Dump $feed;
-
 
 sub munge_datetime {
   my ($date)	   =  @_;
