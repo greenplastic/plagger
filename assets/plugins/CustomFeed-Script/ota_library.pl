@@ -33,9 +33,7 @@ my $s = scraper {
     "list[]" => scraper {
       process "//td[2]", "title" => "TEXT";
       process "//td[5]", "date" => "TEXT";
-#      result 'title','date';
     };
-#  result 'list';
 };
 
 my $res = $s->scrape($mech->content, $mech->uri);
@@ -65,9 +63,7 @@ sub munge_datetime {
     year      => DateTime->now->year,
     month     => $month,
     day	      => $day,
-    hour      => '19', # library closes at 19:00 :/
-    minute    => '00',
     time_zone => 'Asia/Tokyo',
   );
-  return DateTime::Format::W3CDTF->format_datetime($dt);
+  return $dt->ymd;
 }
