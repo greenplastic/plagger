@@ -1,5 +1,5 @@
-custom_feed_handle: http://fortune\.yahoo\.co\.jp/fortune/12astro/index\.html
-custom_feed_follow_link: /fortune/12astro/[0-9]{8}/(cancer|scorpio|aquarius)\.html
-handle: http://fortune\.yahoo\.co\.jp/fortune/12astro/[0-9]{8}/(cancer|scorpio|aquarius)\.html
+custom_feed_handle: http://fortune\.yahoo\.co\.jp/12astro/index\.html
+custom_feed_follow_link: /12astro/[0-9]{8}/(cancer|scorpio|aquarius)\.html
+handle: http://fortune\.yahoo\.co\.jp/12astro/[0-9]{8}/(cancer|scorpio|aquarius)\.html
 extract: <title>(.*?)</title>.*?<!-- yftn-md20/ -->(.*?)<!-- /yftn12a-bg04 -->
 extract_capture: title body
