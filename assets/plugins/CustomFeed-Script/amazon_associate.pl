@@ -45,7 +45,7 @@ my $feed = {
 for my $entry (@{ $res->{list} }) {
   push @{$feed->{entries}}, {
     title => $entry->{date},
-    body  => $entry->{report1} . $entry->{report2} . $entry->{report3},
+    body  => "<table>" . $entry->{report1} . "</table><table>" . $entry->{report2} . "</table><table>" . $entry->{report3},
     link  => $mech->uri->as_string,
   };
 }
