@@ -1,8 +1,6 @@
 #!/usr/bin/perl
 use strict;
 use utf8;
-use DateTime;
-use DateTime::Format::W3CDTF;
 use URI;
 use WWW::Mechanize;
 use Config::Pit;
