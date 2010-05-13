@@ -26,7 +26,7 @@ $mech->submit_form(
     }
 );
 
-$mech->follow_link(text => "貸出照会へ");
+$mech->follow_link(url_regex => qr/logrent/);
 
 my $s = scraper {
     process "table.FULL tbody tr",
