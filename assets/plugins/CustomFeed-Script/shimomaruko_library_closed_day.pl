@@ -38,7 +38,7 @@ print Dump $feed;
 
 sub munge_datetime {
     my ($month, $day) = @_;
-    $month =~ m/([１|２|３|４|５|６|７|８|９|１０|１１|１２])月/ or die "No match: $month";
+    $month =~ m/(.?)月/ or die "No match: $month";
     my $m = $1;
     $m = alnum_z2h($m);
     $day = alnum_z2h($day);
