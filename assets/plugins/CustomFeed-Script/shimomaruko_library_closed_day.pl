@@ -20,13 +20,13 @@ my $uri = new URI('http://www.lib.city.ota.tokyo.jp/clis/calender?LIB=013&RTN=15
 my $res = $s->scrape($uri);
 
 my $feed = {
-    title => "下丸子図書館閉館日"
+    title => "下丸子図書館休館日"
 };
 
 for my $menu (@{$res->{list}}) {
     if ($menu->{title} and $menu->{date}){
         push @{$feed->{entries}}, {
-            title => munge_month($menu->{title}) . "月の閉館日",
+            title => "下丸子図書館休館日",
             date  => munge_datetime($menu->{title}, $menu->{date}),
         };
     }
@@ -35,12 +35,6 @@ for my $menu (@{$res->{list}}) {
 use YAML;
 binmode STDOUT, ":utf8";
 print Dump $feed;
-
-sub munge_month {
-    my $month = shift;
-    $month =~ m/([１|２|３|４|５|６|７|８|９|１０|１１|１２])月/ or die "No match: $month";
-    return alnum_z2h($1);
-}
 
 sub munge_datetime {
     my ($month, $day) = @_;
