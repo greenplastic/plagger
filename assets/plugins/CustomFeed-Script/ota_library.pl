@@ -57,13 +57,16 @@ print Dump $feed;
 
 sub munge_datetime {
     my ($date) =  @_;
-    $date =~ m!(\d{1,2})月(\d{1,2})日! or die "No match: $date";
-    my ($month, $day) = ($1, $2);
+    $date =~ m!(\d{1,4})年(\d{1,2})月(\d{1,2})日! or die "No match: $date";
+    my ($year, $month, $day) = ($1, $2, $3);
     my $dt = DateTime->new(
-        year      => DateTime->now->year,
+        year      => $year,
         month     => $month,
         day       => $day,
-        time_zone => 'Asia/Tokyo',
+        hour      => 00,
+        minute    => 00,
+        second    => 00,
+        time_zone => 'Asia/Tokyo'
     );
     return $dt->ymd;
 }
