@@ -32,7 +32,7 @@ $mech->submit_form(
 );
 
 my $s = scraper {
-    process "table tr[style^='color:Black']",
+    process "table#dgdKas tr[style^='color:Black']",
       "list[]" => scraper {
           process "//td[2]/a", "title" => "TEXT";
           process "//td[6]", "date"  => "TEXT";
