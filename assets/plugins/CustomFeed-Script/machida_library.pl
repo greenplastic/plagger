@@ -29,8 +29,8 @@ $mech->submit_form(
 my $s = scraper {
     process "table tr",
       "list[]" => scraper {
-          process "//td[7]", "title" => "TEXT";
-          process "//td[5]", "date"  => "TEXT";
+          process "//td[6]", "title" => "TEXT";
+          process "//td[4]", "date"  => "TEXT";
       };
 };
 
